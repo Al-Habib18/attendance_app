@@ -16,7 +16,7 @@ app.get("/private", authenticate, async (req, res) => {
     return res.status(200).json({ message: "I am private route" });
 });
 
-app.get("/public", (req, res) => {
+app.get("/public", (_req, res) => {
     return res.status(200).json({ message: "I am public route" });
 });
 
@@ -28,7 +28,7 @@ app.get("/", (_req, res) => {
     res.json(obj);
 });
 
-app.use((err, req, res, next) => {
+app.use((err, _req, res, _next) => {
     console.log(err);
 
     const message = err.message ? err.message : "Server Error occurred";
