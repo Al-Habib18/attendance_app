@@ -2,10 +2,16 @@
 const { register_service, login_service } = require("../service/auth");
 
 const register_controller = async (req, res, next) => {
-    const { name, email, password } = req.body;
+    const { name, email, password, roles, account_status } = req.body;
 
     try {
-        const user = await register_service({ name, email, password });
+        const user = await register_service({
+            name,
+            email,
+            password,
+            roles,
+            account_status,
+        });
         return res
             .status(201)
             .json({ message: "User created successfully", user });
